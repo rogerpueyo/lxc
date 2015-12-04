@@ -33,7 +33,10 @@ download_image() {
 
     info "downloading appliance image..."
     mkdir -p $outdir
-    imagesurl="http://mirror.turnkeylinux.org/turnkeylinux/images/openvz/"
+    case "$deb_release" in
+        jessie)  imagesurl="http://mirror.turnkeylinux.org/turnkeylinux/images/proxmox/";;
+        *)       imagesurl="http://mirror.turnkeylinux.org/turnkeylinux/images/openvz/";;
+    esac
     wget --read-timeout=10 -t 3 -c $imagesurl/$image -O $outdir/$image.tmp
     mv $outdir/$image.tmp $outdir/$image
 }
