@@ -33,6 +33,7 @@ download_image() {
 
     info "downloading appliance image..."
     mkdir -p $outdir
+    deb_release=$(echo $app_version | cut -d "-" -f 2)
     case "$deb_release" in
         jessie)  imagesurl="http://mirror.turnkeylinux.org/turnkeylinux/images/proxmox/";;
         *)       imagesurl="http://mirror.turnkeylinux.org/turnkeylinux/images/openvz/";;
